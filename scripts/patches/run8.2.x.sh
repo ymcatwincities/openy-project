@@ -1,4 +1,7 @@
 #!/bin/bash
+# To get OpenY with Drupal core 8.2.x on DigitalOcean one-app LAMP 16.04 droplet fixed run the command:
+# bash < <(curl -s https://raw.githubusercontent.com/ymcatwincities/openy-project/8.1.x/scripts/patches/run8.2.x.sh)
+# as root user
 cd /var/www/html
 if [ ! -f docroot/core/lib/Drupal/Core/DrupalKernel.php ]; then
     echo "OpenY not found!"
