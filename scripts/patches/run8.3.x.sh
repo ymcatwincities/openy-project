@@ -11,7 +11,7 @@ wget https://raw.githubusercontent.com/ymcatwincities/openy-project/8.1.x/script
 sudo cp docroot/core/lib/Drupal/Core/DrupalKernel.php /var/backups/DrupalKernel.php || true
 echo "Checking patch could be applied"
 
-patch -p1 --dry-run < 8.4.x.patch | grep checking | wc -l
+patch -p1 --dry-run < 8.3.x.patch | grep checking | wc -l
 if [[ $(patch -p1 --dry-run < 8.3.x.patch | grep checking | wc -l) = 2 ]]; then
   echo "Patch is correct! OpenY detected correctly! Patching..."
   patch -p1 < 8.3.x.patch
