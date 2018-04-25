@@ -11,7 +11,7 @@ wget https://raw.githubusercontent.com/ymcatwincities/openy-project/8.1.x/script
 sudo cp docroot/core/lib/Drupal/Core/Security/RequestSanitizer.php /var/backups/RequestSanitizer.php || true
 sudo cp docroot/core/modules/file/src/Element/ManagedFile.php /var/backups/ManagedFile.php || true
 echo "Checking patch could be applied"
-
+cd docroot
 patch -p1 --dry-run < SA-CORE-2018-004.patch | grep checking | wc -l
 if [[ $(patch -p1 --dry-run < SA-CORE-2018-004.patch | grep checking | wc -l) = 2 ]]; then
   echo "Patch is correct! OpenY detected correctly! Patching..."
