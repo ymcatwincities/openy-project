@@ -7,11 +7,15 @@ if [ ! -f docroot/core/modules/file/src/Element/ManagedFile.php ]; then
     echo "OpenY not found!"
     exit 1
 fi
-wget https://raw.githubusercontent.com/ymcatwincities/openy-project/8.1.x/scripts/patches/SA-CORE-2018-004.patch
+
+
 sudo cp docroot/core/lib/Drupal/Core/Security/RequestSanitizer.php /var/backups/RequestSanitizer.php || true
 sudo cp docroot/core/modules/file/src/Element/ManagedFile.php /var/backups/ManagedFile.php || true
-echo "Checking patch could be applied"
+
 cd docroot
+wget https://raw.githubusercontent.com/ymcatwincities/openy-project/8.1.x/scripts/patches/SA-CORE-2018-004.patch
+echo "Checking patch could be applied"
+
 patch -p1 --dry-run < SA-CORE-2018-004.patch | grep checking | wc -l
 if [[ $(patch -p1 --dry-run < SA-CORE-2018-004.patch | grep checking | wc -l) = 2 ]]; then
   echo "Patch is correct! OpenY detected correctly! Patching..."
