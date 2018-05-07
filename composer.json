@@ -4,10 +4,10 @@
     "type": "project",
     "license": "GPL-2.0+",
     "require": {
-        "ymcatwincities/openy": "8.*.*",
         "composer/installers": "^1.2",
+        "cweagans/composer-patches": "~1.0",
         "drupal-composer/drupal-scaffold": "^2.2",
-        "cweagans/composer-patches": "~1.0"
+        "ymcatwincities/openy": "dev-master"
     },
     "require-dev": {
         "ymcatwincities/openy-cibox-build": "dev-master",
@@ -26,6 +26,10 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/kolesnikoff/openy"
+        },
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
@@ -153,6 +157,19 @@
                     "url": "https://github.com/smonetti/btbutton",
                     "type": "git",
                     "reference": "1620254d294a209bdf18cc0bc7b131d2ffaa10db"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "grt-youtube-popup",
+                "version": "1.0.0",
+                "type": "drupal-library",
+                "source": {
+                    "url": "https://github.com/grt107/grt-youtube-popup",
+                    "type": "git",
+                    "reference": "d5cb51ae5dbe526dba7d82c646ec0f46791fa7a0"
                 }
             }
         }
