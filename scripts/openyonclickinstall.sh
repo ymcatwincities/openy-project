@@ -1,10 +1,10 @@
 #!/bin/bash
 # To get OpenY on DigitalOcean one-app LAMP 16.04 droplet run the command:
-# bash < <(curl -s https://raw.githubusercontent.com/ymcatwincities/openy-project/8.1.x/scripts/openyonclickinstall.sh)
+# bash < <(curl -s http://bit.ly/initopeny)
 # as root user
-printf "Hello, OpenY evaluator.\n"
+printf "Hello, OpenY evaluator.\n OpenY one click install version 1.4.\n"
 
-printf "1.2 Installing OpenY into /var/www/html\n"
+printf "Installing OpenY into /var/www/html\n"
 
 printf "\nMaking backup of existing /var/www/html folder to /var/www/html.bak\n"
 sudo rm -rf /var/www/html.bak/html || true
@@ -22,11 +22,9 @@ wget https://github.com/drush-ops/drush/releases/download/8.1.17/drush.phar
 chmod +x drush.phar
 sudo mv drush.phar /usr/local/bin/drush
 
-printf "\nInstalling needed php extensions\n"
+printf "\nInstalling mysql server\n"
 sudo apt-get -y update || true
-# sudo apt-get -y install php-mbstring php-curl php-zip unzip php-dom php-xml php-simplexml|| true
 
-#root_pass=$(awk -F\= '{gsub(/"/,"",$2);print $2}' /root/.digitalocean_password)
 root_pass="root"
 
 sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
@@ -35,8 +33,15 @@ sudo apt-get -y install mysql-server
 
 sudo mysql -uroot -p$root_pass -e "drop database drupal;" || true
 sudo mysql -uroot -p$root_pass -e "create database drupal;" || true
-sudo sed -i "s/www\/html/www\/html\/docroot/g" /etc/apache2/sites-enabled/000-default.conf
-sudo a2enmod rewrite
+sudo mkdir -p /var/www || true
+cd /var/www
+git clone --branch=ansible_lamp https://github.com/cibox/cibox.git
+cd cibox
+bash core/cibox-project-builder/files/vagrant/box/provisioning/shell/initial-setup.sh core/cibox-project-builder/files/vagrant/box/provisioning
+bash core/cibox-project-builder/files/vagrant/box/provisioning/shell/ansible.sh
+sh cilamp.sh
+sudo sed -i "s/var\/www/var\/www\/html\/docroot/g" /etc/apache2/sites-enabled/vhosts.conf
+
 sudo service apache2 restart
 
 drush dl -y drupal-8.4.x --dev --destination=/tmp --default-major=8 --drupal-project-rename=drupal
