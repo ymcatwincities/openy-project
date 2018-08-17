@@ -4,7 +4,7 @@
 # as root user
 printf "Hello, OpenY evaluator.\n"
 
-printf "1.1 Installing OpenY into /var/www/html\n"
+printf "1.2 Installing OpenY into /var/www/html\n"
 
 printf "\nMaking backup of existing /var/www/html folder to /var/www/html.bak\n"
 sudo rm -rf /var/www/html.bak/html || true
@@ -28,6 +28,11 @@ sudo apt-get -y update || true
 
 #root_pass=$(awk -F\= '{gsub(/"/,"",$2);print $2}' /root/.digitalocean_password)
 root_pass="root"
+
+sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
+sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
+sudo apt-get -y install mysql-server
+
 sudo mysql -uroot -p$root_pass -e "drop database drupal;" || true
 sudo mysql -uroot -p$root_pass -e "create database drupal;" || true
 sudo sed -i "s/www\/html/www\/html\/docroot/g" /etc/apache2/sites-enabled/000-default.conf
