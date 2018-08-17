@@ -4,7 +4,7 @@
 # as root user
 printf "Hello, OpenY evaluator.\n"
 
-printf "Installing OpenY into /var/www/html\n"
+printf "1.0 Installing OpenY into /var/www/html\n"
 
 printf "\nMaking backup of existing /var/www/html folder to /var/www/html.bak\n"
 sudo rm -rf /var/www/html.bak/html || true
