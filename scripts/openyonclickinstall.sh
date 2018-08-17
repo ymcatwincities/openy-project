@@ -38,6 +38,8 @@ cd /tmp/drupal
 drush si -y minimal --db-url=mysql://root:$root_pass@localhost/drupal && drush sql-drop -y
 
 printf "\nPreparing OpenY code tree \n"
+sudo rm -rf /var/www/html.bak/html || true
+sudo mv /var/www/html /var/www/html.bak || true
 composer create-project ymcatwincities/openy-project:8.1.x-dev /var/www/html --no-interaction
 cd /var/www/html/ && composer update
 
