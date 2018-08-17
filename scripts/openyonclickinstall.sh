@@ -4,7 +4,7 @@
 # as root user
 printf "Hello, OpenY evaluator.\n"
 
-printf "1.0 Installing OpenY into /var/www/html\n"
+printf "1.1 Installing OpenY into /var/www/html\n"
 
 printf "\nMaking backup of existing /var/www/html folder to /var/www/html.bak\n"
 sudo rm -rf /var/www/html.bak/html || true
@@ -40,6 +40,7 @@ drush si -y minimal --db-url=mysql://root:$root_pass@localhost/drupal && drush s
 
 printf "\nPreparing OpenY code tree \n"
 composer create-project ymcatwincities/openy-project:8.1.x-dev /var/www/html --no-interaction
+cd /var/www/html/ && composer update
 
 cp /tmp/drupal/sites/default/settings.php /var/www/html/docroot/sites/default/settings.php
 sudo mkdir /var/www/html/docroot/sites/default/files
