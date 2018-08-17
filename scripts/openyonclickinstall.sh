@@ -24,7 +24,7 @@ sudo mv drush.phar /usr/local/bin/drush
 
 printf "\nInstalling needed php extensions\n"
 sudo apt-get -y update || true
-sudo apt-get -y install php-mbstring php-curl php-zip unzip php-dom php-xml php-simplexml|| true
+# sudo apt-get -y install php-mbstring php-curl php-zip unzip php-dom php-xml php-simplexml|| true
 
 root_pass=$(awk -F\= '{gsub(/"/,"",$2);print $2}' /root/.digitalocean_password)
 sudo mysql -uroot -p$root_pass -e "drop database drupal;" || true
