@@ -26,7 +26,8 @@ printf "\nInstalling needed php extensions\n"
 sudo apt-get -y update || true
 # sudo apt-get -y install php-mbstring php-curl php-zip unzip php-dom php-xml php-simplexml|| true
 
-root_pass=$(awk -F\= '{gsub(/"/,"",$2);print $2}' /root/.digitalocean_password)
+#root_pass=$(awk -F\= '{gsub(/"/,"",$2);print $2}' /root/.digitalocean_password)
+root_pass="root"
 sudo mysql -uroot -p$root_pass -e "drop database drupal;" || true
 sudo mysql -uroot -p$root_pass -e "create database drupal;" || true
 sudo sed -i "s/www\/html/www\/html\/docroot/g" /etc/apache2/sites-enabled/000-default.conf
