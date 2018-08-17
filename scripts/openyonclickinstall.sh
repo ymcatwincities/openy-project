@@ -10,18 +10,6 @@ printf "\nMaking backup of existing /var/www/html folder to /var/www/html.bak\n"
 sudo rm -rf /var/www/html.bak/html || true
 sudo mv /var/www/html /var/www/html.bak || true
 
-printf "\nInstalling composer\n"
-
-php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-sudo php composer-setup.php --install-dir=/usr/bin --filename=composer
-
-printf "\nInstalling drush 8.1.17. In case if you need newer version - install it manually, please.\n"
-sleep 5
-
-wget https://github.com/drush-ops/drush/releases/download/8.1.17/drush.phar
-chmod +x drush.phar
-sudo mv drush.phar /usr/local/bin/drush
-
 printf "\nInstalling mysql server\n"
 sudo apt-get -y update || true
 
