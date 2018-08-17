@@ -1,5 +1,5 @@
 #!/bin/bash
-# To get OpenY on DigitalOcean one-app LAMP 16.04 droplet run the command:
+# To get OpenY on DigitalOcean 16.04 LST x64 droplet run the command:
 # bash < <(curl -Ls http://bit.ly/initopeny)
 # as root user
 printf "Hello, OpenY evaluator.\n OpenY one click install version 1.4.\n"
