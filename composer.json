@@ -10,7 +10,7 @@
         "cweagans/composer-patches": "~1.0"
     },
     "require-dev": {
-        "ymcatwincities/openy-cibox-build": "dev-master",
+        "ymcatwincities/openy-cibox-build": "dev-test_ygtc_devops",
         "ymcatwincities/openy-cibox-vm": "dev-master",
         "ymcatwincities/openy-docksal": "dev-master",
         "drupal/drupal-driver": "~1.0",
