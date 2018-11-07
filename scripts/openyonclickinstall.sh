@@ -1,7 +1,16 @@
 #!/bin/bash
-# To get OpenY on DigitalOcean 16.04 LST x64 droplet run the command:
-# bash < <(curl -Ls http://bit.ly/initopeny)
+# To get latest dev OpenY on DigitalOcean 16.04 LST x64 droplet run the command:
+#   curl -Ls https://raw.githubusercontent.com/AndreyMaximov/openy-project/8.1.x/scripts/openyonclickinstall.sh | bash -s
+# To get particular version or branch:
+#   curl -Ls https://raw.githubusercontent.com/AndreyMaximov/openy-project/8.1.x/scripts/openyonclickinstall.sh | bash -s 8.1.10
 # as root user
+
+OPENYBETA="8.2.*@beta"
+OPENYDEV="dev-8.x-1.x"
+
+OPENYVERSION="$1"
+OPENYVERSION=${OPENYVERSION:-stable}
+
 printf "Hello, OpenY evaluator.\n OpenY one click install version 1.4.\n"
 
 printf "Installing OpenY into /var/www/html\n"
@@ -41,7 +50,25 @@ printf "\nPreparing OpenY code tree \n"
 sudo rm -rf /var/www/html.bak/html || true
 sudo mv /var/www/html /var/www/html.bak || true
 composer create-project ymcatwincities/openy-project:8.1.x-dev /var/www/html --no-interaction
-cd /var/www/html/ && composer update
+cd /var/www/html/
+
+# Check if the Open Y version must be adjusted.
+if [[ "$OPENYVERSION" == "stable" ]]; then
+  echo "Installing Latest Stable Open Y"
+elif [[ "$OPENYVERSION" == "dev" ]]; then
+  echo "Installing Latest Dev Open Y"
+  composer remove ymcatwincities/openy --no-update
+  composer require ymcatwincities/openy:${OPENYDEV} --update-with-dependencies
+elif [[ "$OPENYVERSION" == "beta" ]]; then
+  echo "Installing Latest Beta Open Y"
+  composer remove ymcatwincities/openy --no-update
+  composer require ymcatwincities/openy:${OPENYBETA} --update-with-dependencies
+else
+  echo "Installing Open Y $OPENYVERSION"
+  composer remove ymcatwincities/openy --no-update
+  composer require ymcatwincities/openy:${OPENYVERSION} --update-with-dependencies
+fi
+composer update
 
 cp /tmp/drupal/sites/default/settings.php /var/www/html/docroot/sites/default/settings.php
 sudo mkdir /var/www/html/docroot/sites/default/files
