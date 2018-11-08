@@ -1,8 +1,16 @@
 #!/bin/bash
-# To get latest dev OpenY on DigitalOcean 16.04 LST x64 droplet run the command:
+# To get the latest stable OpenY on DigitalOcean 16.04 LST x64 droplet run the command:
 #   curl -Ls https://raw.githubusercontent.com/AndreyMaximov/openy-project/8.1.x/scripts/openyonclickinstall.sh | bash -s
-# To get particular version or branch:
+#   or
+#   curl -Ls https://raw.githubusercontent.com/AndreyMaximov/openy-project/8.1.x/scripts/openyonclickinstall.sh | bash -s stable
+# To get the latest dev:
+#   curl -Ls https://raw.githubusercontent.com/AndreyMaximov/openy-project/8.1.x/scripts/openyonclickinstall.sh | bash -s dev
+# To get the latest beta:
+#   curl -Ls https://raw.githubusercontent.com/AndreyMaximov/openy-project/8.1.x/scripts/openyonclickinstall.sh | bash -s beta
+# To get a particular version:
 #   curl -Ls https://raw.githubusercontent.com/AndreyMaximov/openy-project/8.1.x/scripts/openyonclickinstall.sh | bash -s 8.1.10
+# To get a particular branch:
+#   curl -Ls https://raw.githubusercontent.com/AndreyMaximov/openy-project/8.1.x/scripts/openyonclickinstall.sh | bash -s dev-BRANCH_NAME
 # as root user
 
 OPENYBETA="8.2.*@beta"
