@@ -19,6 +19,12 @@ OPENYDEV="dev-8.x-1.x"
 OPENYVERSION="$1"
 OPENYVERSION=${OPENYVERSION:-stable}
 
+# Set up locale if it's missed
+[ -z "$LC_ALL" ] && export LC_ALL=en_US.UTF-8
+[ -z "$LANGUAGE" ] && export LANGUAGE=en_US.UTF-8
+[ -z "$LC_CTYPE" ] && export LC_TYPE=en_US.UTF-8
+[ -z "$LANG" ] && export LANG=en_US.UTF-8
+
 printf "Hello, OpenY evaluator.\n OpenY one click install version 1.4.\n"
 
 printf "Installing OpenY into /var/www/html\n"
