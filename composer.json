@@ -28,6 +28,10 @@
     "repositories": [
         {
             "type": "composer",
+            "url": "http://openy.cibox.tools:4680"
+        },        
+        {
+            "type": "composer",
             "url": "https://packages.drupal.org/8"
         },
         {

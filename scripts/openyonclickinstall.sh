@@ -1,8 +1,31 @@
 #!/bin/bash
-# To get OpenY on DigitalOcean one-app LAMP 16.04 droplet run the command:
-# bash < <(curl -s https://raw.githubusercontent.com/ymcatwincities/openy-project/8.1.x/scripts/openyonclickinstall.sh)
+# To get the latest stable OpenY on DigitalOcean 16.04 LST x64 droplet run the command:
+#   curl -Ls http://bit.ly/initopeny | bash -s
+#   or
+#   curl -Ls http://bit.ly/initopeny | bash -s stable
+# To get the latest dev:
+#   curl -Ls http://bit.ly/initopeny | bash -s dev
+# To get the latest beta:
+#   curl -Ls http://bit.ly/initopeny | bash -s beta
+# To get a particular version:
+#   curl -Ls http://bit.ly/initopeny | bash -s 8.1.10
+# To get a particular branch:
+#   curl -Ls http://bit.ly/initopeny | bash -s dev-BRANCH_NAME
 # as root user
-printf "Hello, OpenY evaluator.\n"
+
+OPENYBETA="8.2.*@beta"
+OPENYDEV="dev-8.x-1.x"
+
+OPENYVERSION="$1"
+OPENYVERSION=${OPENYVERSION:-stable}
+
+# Set up locale if it's missed
+[ -z "$LC_ALL" ] && export LC_ALL=en_US.UTF-8
+[ -z "$LANGUAGE" ] && export LANGUAGE=en_US.UTF-8
+[ -z "$LC_CTYPE" ] && export LC_TYPE=en_US.UTF-8
+[ -z "$LANG" ] && export LANG=en_US.UTF-8
+
+printf "Hello, OpenY evaluator.\n OpenY one click install version 1.4.\n"
 
 printf "Installing OpenY into /var/www/html\n"
 
@@ -10,35 +33,56 @@ printf "\nMaking backup of existing /var/www/html folder to /var/www/html.bak\n"
 sudo rm -rf /var/www/html.bak/html || true
 sudo mv /var/www/html /var/www/html.bak || true
 
-printf "\nInstalling composer\n"
-
-php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-sudo php composer-setup.php --install-dir=/usr/bin --filename=composer
-
-printf "\nInstalling drush 8.1.15. In case if you need newer version - install it manually, please.\n"
-sleep 5
-
-wget https://github.com/drush-ops/drush/releases/download/8.1.15/drush.phar
-chmod +x drush.phar
-sudo mv drush.phar /usr/local/bin/drush
-
-printf "\nInstalling needed php extensions\n"
+printf "\nInstalling mysql server\n"
 sudo apt-get -y update || true
-sudo apt-get -y install php-mbstring php-curl php-zip unzip php-dom php-xml php-simplexml|| true
 
-root_pass=$(awk -F\= '{gsub(/"/,"",$2);print $2}' /root/.digitalocean_password)
+root_pass="root"
+
+sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
+sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
+sudo apt-get -y install mysql-server
+
 sudo mysql -uroot -p$root_pass -e "drop database drupal;" || true
 sudo mysql -uroot -p$root_pass -e "create database drupal;" || true
-sudo sed -i "s/www\/html/www\/html\/docroot/g" /etc/apache2/sites-enabled/000-default.conf
-sudo a2enmod rewrite
+sudo mkdir -p /var/www || true
+cd /var/www
+sudo rm -rf cibox || true
+git clone --branch=ansible_lamp https://github.com/cibox/cibox.git
+cd cibox
+bash core/cibox-project-builder/files/vagrant/box/provisioning/shell/initial-setup.sh core/cibox-project-builder/files/vagrant/box/provisioning
+bash core/cibox-project-builder/files/vagrant/box/provisioning/shell/ansible.sh
+sh cilamp.sh
+sudo sed -i "s/var\/www/var\/www\/html\/docroot/g" /etc/apache2/sites-enabled/vhosts.conf
+
 sudo service apache2 restart
 
-drush dl -y drupal --destination=/tmp --default-major=8 --drupal-project-rename=drupal
+drush dl -y drupal-8.4.x --dev --destination=/tmp --default-major=8 --drupal-project-rename=drupal
 cd /tmp/drupal
 drush si -y minimal --db-url=mysql://root:$root_pass@localhost/drupal && drush sql-drop -y
 
 printf "\nPreparing OpenY code tree \n"
+sudo rm -rf /var/www/html.bak/html || true
+sudo mv /var/www/html /var/www/html.bak || true
 composer create-project ymcatwincities/openy-project:8.1.x-dev /var/www/html --no-interaction
+cd /var/www/html/
+
+# Check if the Open Y version must be adjusted.
+if [[ "$OPENYVERSION" == "stable" ]]; then
+  echo "Installing Latest Stable Open Y"
+elif [[ "$OPENYVERSION" == "dev" ]]; then
+  echo "Installing Latest Dev Open Y"
+  composer remove ymcatwincities/openy --no-update
+  composer require ymcatwincities/openy:${OPENYDEV} --update-with-dependencies
+elif [[ "$OPENYVERSION" == "beta" ]]; then
+  echo "Installing Latest Beta Open Y"
+  composer remove ymcatwincities/openy --no-update
+  composer require ymcatwincities/openy:${OPENYBETA} --update-with-dependencies
+else
+  echo "Installing Open Y $OPENYVERSION"
+  composer remove ymcatwincities/openy --no-update
+  composer require ymcatwincities/openy:${OPENYVERSION} --update-with-dependencies
+fi
+composer update
 
 cp /tmp/drupal/sites/default/settings.php /var/www/html/docroot/sites/default/settings.php
 sudo mkdir /var/www/html/docroot/sites/default/files
