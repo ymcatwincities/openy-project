@@ -35,22 +35,48 @@ If you do not have [Composer](http://getcomposer.org/), you may install it by fo
 #### Latest STABLE version
 ```
 composer create-project ymcatwincities/openy-project MY_PROJECT --no-interaction --no-dev
+cd MY_PROJECT && composer update
 ```
 
 This command will build project based on [**latest stable**](https://github.com/ymcatwincities/openy/releases) release.
 
-#### Latest DEVELOPMENT version
+#### Latest 2.0 BETA version
+```
+composer create-project ymcatwincities/openy-project:8.2.x-dev MY_PROJECT --no-interaction --no-dev
+cd MY_PROJECT && composer update
+```
+
+This command will build project based on [**latest 8.2 beta**](https://github.com/ymcatwincities/openy/releases) release.
+
+#### Latest DEVELOPMENT version (1.x)
 ```
 composer create-project ymcatwincities/openy-project:8.1.x-development-dev MY_PROJECT --no-interaction --no-dev
+cd MY_PROJECT && composer update
 ```
 
 This command will build project based on [**latest development**](https://github.com/ymcatwincities/openy/commits/8.x-1.x) release.
+
+#### Latest DEVELOPMENT version (2.x)
+```
+composer create-project ymcatwincities/openy-project:8.2.x-development-dev MY_PROJECT --no-interaction --no-dev
+cd MY_PROJECT && composer update
+```
+
+This command will build project based on the [**development branch**](https://github.com/ymcatwincities/openy/commits/8.x-2.x) release.
 
 ## Development environment
 
 You should use composer command without `--no-dev` if you would like to get environment that was configured especially for OpenY. So it should look like this:
 ```
 composer create-project ymcatwincities/openy-project:8.1.x-development-dev MY_PROJECT --no-interaction
+cd MY_PROJECT && composer update
+```
+
+or (for Open Y 2.0)
+
+```
+composer create-project ymcatwincities/openy-project:8.2.x-development-dev MY_PROJECT --no-interaction
+cd MY_PROJECT && composer update
 ```
 
 ### CIBox VM
