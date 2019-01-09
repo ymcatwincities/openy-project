@@ -63,7 +63,7 @@ drush si -y minimal --db-url=mysql://root:$root_pass@localhost/drupal && drush s
 printf "\nPreparing OpenY code tree \n"
 sudo rm -rf /var/www/html.bak/html || true
 sudo mv /var/www/html /var/www/html.bak || true
-composer create-project ymcatwincities/openy-project:8.1.x-dev /var/www/html --no-interaction
+COMPOSER_MEMORY_LIMIT=-1 composer create-project ymcatwincities/openy-project:8.1.x-dev /var/www/html --no-interaction
 cd /var/www/html/
 
 # Check if the Open Y version must be adjusted.
@@ -71,21 +71,21 @@ if [[ "$OPENYVERSION" == "stable" ]]; then
   echo "Installing Latest Stable Open Y"
 elif [[ "$OPENYVERSION" == "dev" ]]; then
   echo "Installing Latest Dev Open Y"
-  composer remove ymcatwincities/openy --no-update
-  composer require ymcatwincities/openy:${OPENYDEV} --update-with-dependencies
+  COMPOSER_MEMORY_LIMIT=-1 composer remove ymcatwincities/openy --no-update
+  COMPOSER_MEMORY_LIMIT=-1 composer require ymcatwincities/openy:${OPENYDEV} --update-with-dependencies
 elif [[ "$OPENYVERSION" == "beta" ]]; then
   echo "Installing Latest Beta Open Y"
-  composer remove ymcatwincities/openy --no-update
-  composer require ymcatwincities/openy:${OPENYBETA} --update-with-dependencies
+  COMPOSER_MEMORY_LIMIT=-1 composer remove ymcatwincities/openy --no-update
+  COMPOSER_MEMORY_LIMIT=-1 composer require ymcatwincities/openy:${OPENYBETA} --update-with-dependencies
 else
   echo "Installing Open Y $OPENYVERSION"
-  composer remove ymcatwincities/openy --no-update
-  composer require ymcatwincities/openy:${OPENYVERSION} --update-with-dependencies
+  COMPOSER_MEMORY_LIMIT=-1 composer remove ymcatwincities/openy --no-update
+  COMPOSER_MEMORY_LIMIT=-1 composer require ymcatwincities/openy:${OPENYVERSION} --update-with-dependencies
 fi
-composer update
+COMPOSER_MEMORY_LIMIT=-1 composer update
 
 cp /tmp/drupal/sites/default/settings.php /var/www/html/docroot/sites/default/settings.php
-sudo mkdir /var/www/html/docroot/sites/default/files
+sudo mkdir -p /var/www/html/docroot/sites/default/files
 echo "\$config['system.logging']['error_level'] = 'hide';" >> /var/www/html/docroot/sites/default/settings.php
 sudo chmod -R 777 /var/www/html/docroot/sites/default/settings.php
 sudo chmod -R 777 /var/www/html/docroot/sites/default/files
