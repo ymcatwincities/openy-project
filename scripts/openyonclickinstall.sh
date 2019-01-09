@@ -1,5 +1,5 @@
 #!/bin/bash
-# To get the latest stable OpenY on DigitalOcean 16.04 LST x64 droplet run the command:
+# To get the latest stable OpenY on DigitalOcean 16.04 LTS x64 droplet run the command:
 #   curl -Ls http://bit.ly/initopeny | bash -s
 #   or
 #   curl -Ls http://bit.ly/initopeny | bash -s stable
