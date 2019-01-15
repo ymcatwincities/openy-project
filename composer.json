@@ -4,7 +4,7 @@
     "type": "project",
     "license": "GPL-2.0+",
     "require": {
-        "ymcatwincities/openy": "dev-8.x-2.x",
+        "ymcatwincities/openy": "8.*.*",
         "composer/installers": "^1.2",
         "drupal-composer/drupal-scaffold": "^2.2",
         "cweagans/composer-patches": "~1.0"
@@ -170,6 +170,18 @@
                     "url": "https://github.com/grt107/grt-youtube-popup",
                     "type": "git",
                     "reference": "d5cb51ae5dbe526dba7d82c646ec0f46791fa7a0"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "library-davekoelle/alphanum",
+                "version": "1.0.0",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/AndreyMaximov/alphanum/archive/1.0.0.zip",
+                    "type": "zip"
                 }
             }
         }
