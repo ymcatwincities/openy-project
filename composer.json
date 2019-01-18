@@ -36,28 +36,16 @@
         },
         {
             "type": "package",
-            "package": [
-                {
-                    "name": "library-kenwheeler/slick",
-                    "version": "1.8.0",
-                    "type": "drupal-library",
-                    "source": {
-                        "url": "https://github.com/kenwheeler/slick",
-                        "type": "git",
-                        "reference": "1.8.0"
-                    }
-                },
-                {
-                    "name": "library-kenwheeler/slick",
-                    "version": "1.6.0",
-                    "type": "drupal-library",
-                    "source": {
-                        "url": "https://github.com/kenwheeler/slick",
-                        "type": "git",
-                        "reference": "1.6.0"
-                    }
+            "package": {
+                "name": "library-kenwheeler/slick",
+                "version": "1.6.0",
+                "type": "drupal-library",
+                "source": {
+                    "url": "https://github.com/kenwheeler/slick",
+                    "type": "git",
+                    "reference": "1.6.0"
                 }
-            ]
+            }
         },
         {
             "type": "package",
@@ -87,28 +75,16 @@
         },
         {
             "type": "package",
-            "package": [
-                {
-                    "name": "library-enyo/dropzone",
-                    "version": "5.5.0",
-                    "type": "drupal-library",
-                    "source": {
-                        "url": "https://github.com/enyo/dropzone",
-                        "type": "git",
-                        "reference": "v5.5.0"
-                    }
-                },
-                {
-                    "name": "library-enyo/dropzone",
-                    "version": "4.3.0",
-                    "type": "drupal-library",
-                    "source": {
-                        "url": "https://github.com/enyo/dropzone",
-                        "type": "git",
-                        "reference": "v4.3.0"
-                    }
+            "package": {
+                "name": "library-enyo/dropzone",
+                "version": "4.3.0",
+                "type": "drupal-library",
+                "source": {
+                    "url": "https://github.com/enyo/dropzone",
+                    "type": "git",
+                    "reference": "v4.3.0"
                 }
-            ]
+            }
         },
         {
             "type": "package",
