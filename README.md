@@ -79,6 +79,12 @@ composer create-project ymcatwincities/openy-project:8.2.x-development-dev MY_PR
 cd MY_PROJECT && composer update
 ```
 
+If you need to keep all git submodules - use
+```sh
+composer create-project ymcatwincities/openy-project:8.x-2.x-git-dev MY_PROJECT --no-interaction
+cd MY_PROJECT && composer update
+```
+
 ### CIBox VM
 [CIBox VM](http://cibox.tools) allows you to make a contribution into OpenY in a few minutes. Just follow steps and then you'll know how to do it.
 
