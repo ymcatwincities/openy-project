@@ -14,7 +14,7 @@
 # as root user
 
 OPENYBETA="8.2.*@beta"
-OPENYDEV="dev-8.x-2.x"
+OPENYDEV="dev-8.x-1.x"
 
 OPENYVERSION="$1"
 OPENYVERSION=${OPENYVERSION:-stable}
@@ -25,7 +25,7 @@ OPENYVERSION=${OPENYVERSION:-stable}
 [ -z "$LC_CTYPE" ] && export LC_TYPE=en_US.UTF-8
 [ -z "$LANG" ] && export LANG=en_US.UTF-8
 
-printf "Hello, OpenY evaluator.\n OpenY one click install version 2.0.\n"
+printf "Hello, OpenY evaluator.\n OpenY one click install version 1.4.\n"
 
 printf "Installing OpenY into /var/www/html\n"
 
@@ -63,7 +63,7 @@ drush si -y minimal --db-url=mysql://root:$root_pass@localhost/drupal && drush s
 printf "\nPreparing OpenY code tree \n"
 sudo rm -rf /var/www/html.bak/html || true
 sudo mv /var/www/html /var/www/html.bak || true
-COMPOSER_MEMORY_LIMIT=-1 composer create-project ymcatwincities/openy-project:8.2.x-dev /var/www/html --no-interaction
+COMPOSER_MEMORY_LIMIT=-1 composer create-project ymcatwincities/openy-project:8.1.x-dev /var/www/html --no-interaction
 cd /var/www/html/
 
 # Check if the Open Y version must be adjusted.
