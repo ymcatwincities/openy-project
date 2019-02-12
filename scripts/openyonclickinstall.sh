@@ -82,7 +82,7 @@ else
   COMPOSER_MEMORY_LIMIT=-1 composer remove ymcatwincities/openy --no-update
   COMPOSER_MEMORY_LIMIT=-1 composer require ymcatwincities/openy:${OPENYVERSION} --update-with-dependencies
 fi
-composer update
+COMPOSER_MEMORY_LIMIT=-1 composer update
 
 cp /tmp/drupal/sites/default/settings.php /var/www/html/docroot/sites/default/settings.php
 sudo mkdir /var/www/html/docroot/sites/default/files
