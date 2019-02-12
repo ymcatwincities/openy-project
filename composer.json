@@ -35,56 +35,8 @@
             "url": "https://packages.drupal.org/8"
         },
         {
-            "type": "package",
-            "package": {
-                "name": "library-kenwheeler/slick",
-                "version": "1.8.0",
-                "type": "drupal-library",
-                "source": {
-                    "url": "https://github.com/kenwheeler/slick",
-                    "type": "git",
-                    "reference": "1.8.0"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "library-dinbror/blazy",
-                "version": "1.8.2",
-                "type": "drupal-library",
-                "source": {
-                    "url": "https://github.com/dinbror/blazy",
-                    "type": "git",
-                    "reference": "1.8.2"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "library-gdsmith/jquery.easing",
-                "version": "1.4.1",
-                "type": "drupal-library",
-                "source": {
-                    "url": "https://github.com/gdsmith/jquery.easing",
-                    "type": "git",
-                    "reference": "1.4.1"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "library-enyo/dropzone",
-                "version": "5.5.0",
-                "type": "drupal-library",
-                "source": {
-                    "url": "https://github.com/enyo/dropzone",
-                    "type": "git",
-                    "reference": "v5.5.0"
-                }
-            }
+            "type": "composer",
+            "url": "https://asset-packagist.org"
         },
         {
             "type": "package",
@@ -206,9 +158,17 @@
         "docksal": "[ -d ./vendor/ymcatwincities/openy-docksal ] && (rsync -r --exclude=composer.json --exclude=.git --exclude=README.md ./vendor/ymcatwincities/openy-docksal/ ./) || (rm -rf .docksal build.sh)"
     },
     "extra": {
+        "installer-types": [
+            "bower-asset",
+            "npm-asset"
+        ],
         "installer-paths": {
             "docroot/core": ["type:drupal-core"],
-            "docroot/libraries/{$name}": ["type:drupal-library"],
+            "docroot/libraries/{$name}": [
+                "type:drupal-library",
+                "type:bower-asset",
+                "type:npm-asset"
+            ],
             "docroot/modules/contrib/{$name}": ["type:drupal-module"],
             "docroot/profiles/contrib/{$name}": ["type:drupal-profile"],
             "docroot/themes/contrib/{$name}": ["type:drupal-theme"],
