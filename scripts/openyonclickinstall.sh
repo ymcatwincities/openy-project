@@ -1,5 +1,5 @@
 #!/bin/bash
-# To get the latest stable OpenY on DigitalOcean 16.04 LTS x64 droplet run the command:
+# To get the latest stable OpenY on DigitalOcean 16.04 LST x64 droplet run the command:
 #   curl -Ls http://bit.ly/initopeny | bash -s
 #   or
 #   curl -Ls http://bit.ly/initopeny | bash -s stable
@@ -14,7 +14,7 @@
 # as root user
 
 OPENYBETA="8.2.*@beta"
-OPENYDEV="dev-8.x-1.x"
+OPENYDEV="dev-8.x-2.x"
 
 OPENYVERSION="$1"
 OPENYVERSION=${OPENYVERSION:-stable}
@@ -25,7 +25,7 @@ OPENYVERSION=${OPENYVERSION:-stable}
 [ -z "$LC_CTYPE" ] && export LC_TYPE=en_US.UTF-8
 [ -z "$LANG" ] && export LANG=en_US.UTF-8
 
-printf "Hello, OpenY evaluator.\n OpenY one click install version 1.4.\n"
+printf "Hello, OpenY evaluator.\n OpenY one click install version 1.5.\n"
 
 printf "Installing OpenY into /var/www/html\n"
 
@@ -56,14 +56,14 @@ sudo sed -i "s/var\/www/var\/www\/html\/docroot/g" /etc/apache2/sites-enabled/vh
 
 sudo service apache2 restart
 
-drush dl -y drupal-8.4.x --dev --destination=/tmp --default-major=8 --drupal-project-rename=drupal
+drush dl -y drupal-8.6.x --dev --destination=/tmp --default-major=8 --drupal-project-rename=drupal
 cd /tmp/drupal
 drush si -y minimal --db-url=mysql://root:$root_pass@localhost/drupal && drush sql-drop -y
 
 printf "\nPreparing OpenY code tree \n"
 sudo rm -rf /var/www/html.bak/html || true
 sudo mv /var/www/html /var/www/html.bak || true
-COMPOSER_MEMORY_LIMIT=-1 composer create-project ymcatwincities/openy-project:8.1.x-dev /var/www/html --no-interaction
+COMPOSER_MEMORY_LIMIT=-1 composer create-project ymcatwincities/openy-project:8.2.x-dev /var/www/html --no-interaction
 cd /var/www/html/
 
 # Check if the Open Y version must be adjusted.
@@ -85,7 +85,7 @@ fi
 COMPOSER_MEMORY_LIMIT=-1 composer update
 
 cp /tmp/drupal/sites/default/settings.php /var/www/html/docroot/sites/default/settings.php
-sudo mkdir -p /var/www/html/docroot/sites/default/files
+sudo mkdir /var/www/html/docroot/sites/default/files
 echo "\$config['system.logging']['error_level'] = 'hide';" >> /var/www/html/docroot/sites/default/settings.php
 sudo chmod -R 777 /var/www/html/docroot/sites/default/settings.php
 sudo chmod -R 777 /var/www/html/docroot/sites/default/files
