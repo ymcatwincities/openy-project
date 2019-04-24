@@ -115,7 +115,7 @@
         {
             "type": "package",
             "package": {
-                "name": "grt-youtube-popup",
+                "name": "grt107/grt-youtube-popup",
                 "version": "1.0.0",
                 "type": "drupal-library",
                 "source": {
