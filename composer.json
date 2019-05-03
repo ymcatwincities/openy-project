@@ -6,7 +6,7 @@
     "require": {
         "ymcatwincities/openy": "8.2.*",
         "composer/installers": "^1.2",
-        "drupal-composer/drupal-scaffold": "^2.5.0",
+        "drupal-composer/drupal-scaffold": "2.4.0",
         "cweagans/composer-patches": "~1.0"
     },
     "require-dev": {
@@ -115,6 +115,19 @@
         {
             "type": "package",
             "package": {
+                "name": "grt107/grt-youtube-popup",
+                "version": "1.0.0",
+                "type": "drupal-library",
+                "source": {
+                    "url": "https://github.com/grt107/grt-youtube-popup",
+                    "type": "git",
+                    "reference": "d5cb51ae5dbe526dba7d82c646ec0f46791fa7a0"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
                 "name": "grt-youtube-popup",
                 "version": "1.0.0",
                 "type": "drupal-library",
@@ -133,6 +146,30 @@
                 "type": "drupal-library",
                 "dist": {
                     "url": "https://github.com/AndreyMaximov/alphanum/archive/1.0.0.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "vuejs/vue",
+                "version": "2.6.10",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/vuejs/vue/archive/v2.6.10.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "vuejs/vue-router",
+                "version": "3.0.6",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/vuejs/vue-router/archive/v3.0.6.zip",
                     "type": "zip"
                 }
             }
