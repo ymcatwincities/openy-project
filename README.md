@@ -66,7 +66,8 @@ This command will build project based on the [**development branch**](https://gi
 
 ## Development environment
 
-You should use composer command without `--no-dev` if you would like to get environment that was configured especially for OpenY. So it should look like this:
+You should use composer command without `--no-dev` if you would like to get environment that was configured especially for OpenY. This means you'd remove Vagrant/Docksal from the code tree.
+So it should look like this:
 ```
 composer create-project ymcatwincities/openy-project:8.1.x-development-dev MY_PROJECT --no-interaction
 cd MY_PROJECT && composer update
