@@ -63,6 +63,7 @@ cd MY_PROJECT && composer update
 ```
 
 This command will build project based on the [**development branch**](https://github.com/ymcatwincities/openy/commits/8.x-2.x) release.
+See https://youtu.be/jRlinjpTl0c how to video for the whole process of this command usage.
 
 ## Development environment
 
