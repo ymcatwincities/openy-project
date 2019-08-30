@@ -102,6 +102,18 @@
         {
             "type": "package",
             "package": {
+                "name": "library-ckeditor/font",
+                "version": "4.12.1",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://download.ckeditor.com/font/releases/font_4.12.1.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
                 "name": "library-smonetti/btbutton",
                 "version": "1.0.1",
                 "type": "drupal-library",
