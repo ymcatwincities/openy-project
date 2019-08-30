@@ -28,7 +28,7 @@
     "repositories": [
         {
             "type": "composer",
-            "url": "http://openy.cibox.tools:4680"
+            "url": "https://openy.cibox.tools:4681"
         },        
         {
             "type": "composer",
