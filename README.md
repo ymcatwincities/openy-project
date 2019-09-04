@@ -73,6 +73,7 @@ So it should look like this:
 composer create-project ymcatwincities/openy-project:8.1.x-development-dev MY_PROJECT --no-interaction
 cd MY_PROJECT && composer update
 ```
+See https://youtu.be/jRlinjpTl0c how to video for the whole process of this command usage.
 
 or (for Open Y 2.0)
 
@@ -80,6 +81,7 @@ or (for Open Y 2.0)
 composer create-project ymcatwincities/openy-project:8.2.x-development-dev MY_PROJECT --no-interaction
 cd MY_PROJECT && composer update
 ```
+See https://youtu.be/jRlinjpTl0c how to video for the whole process of this command usage.
 
 ### CIBox VM
 [CIBox VM](http://cibox.tools) allows you to make a contribution into OpenY in a few minutes. Just follow steps and then you'll know how to do it.
