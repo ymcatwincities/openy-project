@@ -57,6 +57,7 @@ sudo sed -i "s/var\/www/var\/www\/html\/docroot/g" /etc/apache2/sites-enabled/vh
 sudo service apache2 restart
 
 drush dl -y drupal-8.7.x --dev --destination=/tmp --default-major=8 --drupal-project-rename=drupal
+
 cd /tmp/drupal
 drush si -y minimal --db-url=mysql://root:$root_pass@localhost/drupal ; drush sql-drop -y
 drush sql-drop -y
