@@ -165,6 +165,18 @@
         {
             "type": "package",
             "package": {
+                "name": "library-vakata/jstree",
+                "version": "3.3.8",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/vakata/jstree/archive/3.3.8.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
                 "name": "vuejs/vue",
                 "version": "2.6.10",
                 "type": "drupal-library",
