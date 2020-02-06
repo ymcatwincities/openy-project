@@ -173,30 +173,6 @@
                     "type": "zip"
                 }
             }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "vuejs/vue",
-                "version": "2.6.10",
-                "type": "drupal-library",
-                "dist": {
-                    "url": "https://github.com/vuejs/vue/archive/v2.6.10.zip",
-                    "type": "zip"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "vuejs/vue-router",
-                "version": "3.0.6",
-                "type": "drupal-library",
-                "dist": {
-                    "url": "https://github.com/vuejs/vue-router/archive/v3.0.6.zip",
-                    "type": "zip"
-                }
-            }
         }
     ],
     "scripts": {
