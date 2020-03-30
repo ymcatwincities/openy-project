@@ -202,7 +202,6 @@
     ],
     "scripts": {
         "post-install-cmd": [
-            "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
             "@cibox-build",
             "@cibox-vm",
             "@docksal",
@@ -210,7 +209,6 @@
             "bash scripts/remove_libraries_gitignore_files.sh || :"
         ],
         "post-update-cmd": [
-            "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
             "@cibox-build",
             "@cibox-vm",
             "@docksal",
