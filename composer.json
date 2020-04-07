@@ -141,19 +141,6 @@
         {
             "type": "package",
             "package": {
-                "name": "grt-youtube-popup",
-                "version": "1.0.0",
-                "type": "drupal-library",
-                "source": {
-                    "url": "https://github.com/grt107/grt-youtube-popup",
-                    "type": "git",
-                    "reference": "d5cb51ae5dbe526dba7d82c646ec0f46791fa7a0"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
                 "name": "library-davekoelle/alphanum",
                 "version": "1.0.0",
                 "type": "drupal-library",
