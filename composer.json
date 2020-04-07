@@ -6,7 +6,8 @@
     "require": {
         "ymcatwincities/openy": "8.2.*",
         "composer/installers": "^1.2",
-        "drupal-composer/drupal-scaffold": "2.4.0",
+        "drupal/core-composer-scaffold": "^8.8",
+        "drupal/core-recommended": "^8.8",
         "cweagans/composer-patches": "~1.0"
     },
     "require-dev": {
@@ -29,7 +30,7 @@
         {
             "type": "composer",
             "url": "https://openy.cibox.tools:4681"
-        },        
+        },
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
@@ -199,6 +200,15 @@
             "bower-asset",
             "npm-asset"
         ],
+        "drupal-scaffold": {
+            "locations": {
+                "web-root": "docroot/"
+            },
+            "allowed-packages": [
+                "drupal/core"
+            ]
+
+        },
         "installer-paths": {
             "docroot/core": ["type:drupal-core"],
             "docroot/libraries/{$name}": [
