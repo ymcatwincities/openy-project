@@ -140,19 +140,6 @@
         {
             "type": "package",
             "package": {
-                "name": "grt-youtube-popup",
-                "version": "1.0.0",
-                "type": "drupal-library",
-                "source": {
-                    "url": "https://github.com/grt107/grt-youtube-popup",
-                    "type": "git",
-                    "reference": "d5cb51ae5dbe526dba7d82c646ec0f46791fa7a0"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
                 "name": "library-davekoelle/alphanum",
                 "version": "1.0.0",
                 "type": "drupal-library",
@@ -173,30 +160,6 @@
                     "type": "zip"
                 }
             }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "vuejs/vue",
-                "version": "2.6.10",
-                "type": "drupal-library",
-                "dist": {
-                    "url": "https://github.com/vuejs/vue/archive/v2.6.10.zip",
-                    "type": "zip"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "vuejs/vue-router",
-                "version": "3.0.6",
-                "type": "drupal-library",
-                "dist": {
-                    "url": "https://github.com/vuejs/vue-router/archive/v3.0.6.zip",
-                    "type": "zip"
-                }
-            }
         }
     ],
     "scripts": {
@@ -205,16 +168,14 @@
             "@cibox-build",
             "@cibox-vm",
             "@docksal",
-            "bash scripts/remove_vendor_git_folders.sh || :",
-            "bash scripts/remove_libraries_gitignore_files.sh || :"
+            "bash scripts/remove_vendor_git_folders.sh || :"
         ],
         "post-update-cmd": [
             "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
             "@cibox-build",
             "@cibox-vm",
             "@docksal",
-            "bash scripts/remove_vendor_git_folders.sh || :",
-            "bash scripts/remove_libraries_gitignore_files.sh || :"
+            "bash scripts/remove_vendor_git_folders.sh || :"
         ],
         "cibox-build": "[ -d ./vendor/ymcatwincities/openy-cibox-build ] && (rsync -r --exclude=composer.json --exclude=.gitignore --exclude=.git ./vendor/ymcatwincities/openy-cibox-build/ ./docroot) || (rm -rf ./docroot/devops ./docroot/*.sh ./docroot/*.yml ./docroot/*.md ./docroot/ansible.cfg)",
         "cibox-vm": "[ -d ./vendor/ymcatwincities/openy-cibox-vm ] && (rsync -r --exclude=composer.json --exclude=README.md --exclude=.gitignore --exclude=.git --exclude=LICENSE ./vendor/ymcatwincities/openy-cibox-vm/ ./) || (rm -rf cibox provisioning Vagrantfile .vagrant backup cache)",

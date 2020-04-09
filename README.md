@@ -63,7 +63,9 @@ cd MY_PROJECT && composer update
 ```
 
 This command will build project based on the [**development branch**](https://github.com/ymcatwincities/openy/commits/8.x-2.x) release.
+
 See https://youtu.be/jRlinjpTl0c how to video for the whole process of this command usage.
+
 
 ## Development environment
 
@@ -73,13 +75,24 @@ So it should look like this:
 composer create-project ymcatwincities/openy-project:8.1.x-development-dev MY_PROJECT --no-interaction
 cd MY_PROJECT && composer update
 ```
+
 See https://youtu.be/jRlinjpTl0c how to video for the whole process of this command usage.
+=======
+
 
 or (for Open Y 2.0)
 
 ```
 composer create-project ymcatwincities/openy-project:8.2.x-development-dev MY_PROJECT --no-interaction
 cd MY_PROJECT && composer update
+
+```
+
+If you need to keep all git submodules - use
+```sh
+composer create-project ymcatwincities/openy-project:8.x-2.x-git-dev MY_PROJECT --no-interaction
+cd MY_PROJECT && composer update
+
 ```
 See https://youtu.be/jRlinjpTl0c how to video for the whole process of this command usage.
 
