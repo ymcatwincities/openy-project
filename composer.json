@@ -4,7 +4,7 @@
     "type": "project",
     "license": "GPL-2.0+",
     "require": {
-        "ymcatwincities/openy": "9.2.*",
+        "ymcatwincities/openy": "dev-9.x-2.x",
         "composer/installers": "^1.2",
         "drupal/core-composer-scaffold": "^9.0",
         "drupal/core-recommended": "^9.0",
