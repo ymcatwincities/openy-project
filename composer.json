@@ -6,8 +6,8 @@
     "require": {
         "ymcatwincities/openy": "8.2.*",
         "composer/installers": "^1.2",
-        "drupal/core-composer-scaffold": "^8.8",
-        "drupal/core-recommended": "^8.8",
+        "drupal/core-composer-scaffold": "^9.0",
+        "drupal/core-recommended": "^9.0",
         "cweagans/composer-patches": "~1.0"
     },
     "require-dev": {
