@@ -5,7 +5,7 @@
     "type": "project",
     "license": "GPL-2.0+",
     "require": {
-        "ymcatwincities/openy": "8.2.4.6",
+        "ymcatwincities/openy": "8.2.*",
         "ymcatwincities/openy_gated_content": "*",
         "composer/installers": "^1.5",
         "drupal/core-composer-scaffold": "^8.8",
