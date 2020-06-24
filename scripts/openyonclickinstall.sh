@@ -12,6 +12,10 @@
 # To get a particular branch:
 #   curl -Ls http://bit.ly/initopeny | bash -s dev-BRANCH_NAME
 # as root user
+#
+# To get Virtual Y
+#   curl -Ls https://openy.org/l/virtualy | bash -s virtualy
+#
 
 OPENYBETA="8.2.*@beta"
 OPENYDEV="dev-8.x-2.x"
@@ -25,7 +29,7 @@ OPENYVERSION=${OPENYVERSION:-stable}
 [ -z "$LC_CTYPE" ] && export LC_TYPE=en_US.UTF-8
 [ -z "$LANG" ] && export LANG=en_US.UTF-8
 
-printf "Hello, OpenY evaluator.\n OpenY one click install version 1.5.\n"
+printf "Hello, OpenY evaluator.\n OpenY one click install version 1.6.\n"
 
 printf "Installing OpenY into /var/www/html\n"
 
@@ -56,7 +60,7 @@ sudo sed -i "s/var\/www/var\/www\/html\/docroot/g" /etc/apache2/sites-enabled/vh
 
 sudo service apache2 restart
 
-drush dl -y drupal-8.7.x --dev --destination=/tmp --default-major=8 --drupal-project-rename=drupal
+drush dl -y drupal-8.9.x --dev --destination=/tmp --default-major=8 --drupal-project-rename=drupal
 
 cd /tmp/drupal
 drush si -y minimal --db-url=mysql://root:$root_pass@localhost/drupal ; drush sql-drop -y
@@ -75,6 +79,9 @@ elif [[ "$OPENYVERSION" == "dev" ]]; then
   echo "Installing Latest Dev Open Y"
   COMPOSER_MEMORY_LIMIT=-1 composer remove ymcatwincities/openy --no-update
   COMPOSER_MEMORY_LIMIT=-1 composer require ymcatwincities/openy:${OPENYDEV} --update-with-dependencies
+elif [[ "$OPENYVERSION" == "virtualy" ]]; then
+  echo "Installing Latest Standalone Virtual Y"
+  COMPOSER_MEMORY_LIMIT=-1 composer require ymcatwincities/openy_gated_content
 elif [[ "$OPENYVERSION" == "beta" ]]; then
   echo "Installing Latest Beta Open Y"
   COMPOSER_MEMORY_LIMIT=-1 composer remove ymcatwincities/openy --no-update
@@ -94,4 +101,4 @@ sudo chmod -R 777 /var/www/html/docroot/sites/default/files
 
 IP="$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/')"
 
-printf "\nOpen http://$IP/core/install.php to proceed with OpenY installation.\n"
+printf "\nOpen http://$IP/core/install.php to proceed with Open Y installation.\n"
