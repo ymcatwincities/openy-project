@@ -102,3 +102,7 @@ sudo chmod -R 777 /var/www/html/docroot/sites/default/files
 IP="$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/')"
 
 printf "\nOpen http://$IP/core/install.php to proceed with Open Y installation.\n"
+
+
+TODO
+ansible-playbook vendor/ymcatwincities/openy-cibox-vm/cibox/jobs/build.yml  -i 'localhost,' --connection=local -e "server_docroot_folder=/var/www/sandbox_accessibility_lily/reinstall workspace=/var/www/sandbox_accessibility_lily/reinstall build_number=docroot build_folder_prefix="
