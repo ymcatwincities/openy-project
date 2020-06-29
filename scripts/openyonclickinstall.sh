@@ -72,6 +72,8 @@ sudo mv /var/www/html /var/www/html.bak || true
 COMPOSER_MEMORY_LIMIT=-1 composer create-project ymcatwincities/openy-project:8.2.x-dev /var/www/html --no-interaction
 cd /var/www/html/
 
+IP="$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/')"
+
 # Check if the Open Y version must be adjusted.
 if [[ "$OPENYVERSION" == "stable" ]]; then
   echo "Installing Latest Stable Open Y"
@@ -79,30 +81,47 @@ elif [[ "$OPENYVERSION" == "dev" ]]; then
   echo "Installing Latest Dev Open Y"
   COMPOSER_MEMORY_LIMIT=-1 composer remove ymcatwincities/openy --no-update
   COMPOSER_MEMORY_LIMIT=-1 composer require ymcatwincities/openy:${OPENYDEV} --update-with-dependencies
+  COMPOSER_MEMORY_LIMIT=-1 composer update
+  cp /tmp/drupal/sites/default/settings.php /var/www/html/docroot/sites/default/settings.php
+  sudo mkdir /var/www/html/docroot/sites/default/files
+  echo "\$config['system.logging']['error_level'] = 'hide';" >> /var/www/html/docroot/sites/default/settings.php
+  sudo chmod -R 777 /var/www/html/docroot/sites/default/settings.php
+  sudo chmod -R 777 /var/www/html/docroot/sites/default/files
+
+  printf "\nOpen http://$IP/core/install.php to proceed with Open Y installation.\n"
 elif [[ "$OPENYVERSION" == "virtualy" ]]; then
   echo "Installing Latest Standalone Virtual Y"
   COMPOSER_MEMORY_LIMIT=-1 composer require ymcatwincities/openy_gated_content
+  COMPOSER_MEMORY_LIMIT=-1 composer update
+  ansible-playbook /var/www/html/vendor/ymcatwincities/openy-cibox-vm/cibox/jobs/build.yml  -i 'localhost,' --connection=local -e "server_docroot_folder=/var/www/html workspace=/var/www/html/ build_number=docroot build_folder_prefix="
+  ansible-playbook /var/www/html/vendor/ymcatwincities/openy-cibox-build/reinstall.yml  -i 'localhost,' --connection=local -e "php_env_vars=APP_ENV=dev mysql_user=root mysql_password=root mysql_db=virtualy drupal_folder=/var/www/html/docroot site_url=$IP pp_environment=demo run_reinstall=true openy_profile_install_settings=openy_configure_profile.preset=standard openy_theme_select.theme=openy_carnation openy_select_content.content=0 sites_default_file_path=/var/www/html/docroot/sites/example.sites.php"
+  printf "\nOpen http://$IP/user/login to proceed with Virtual Y installation.\n"
 elif [[ "$OPENYVERSION" == "beta" ]]; then
   echo "Installing Latest Beta Open Y"
   COMPOSER_MEMORY_LIMIT=-1 composer remove ymcatwincities/openy --no-update
   COMPOSER_MEMORY_LIMIT=-1 composer require ymcatwincities/openy:${OPENYBETA} --update-with-dependencies
+  COMPOSER_MEMORY_LIMIT=-1 composer update
+  cp /tmp/drupal/sites/default/settings.php /var/www/html/docroot/sites/default/settings.php
+  sudo mkdir /var/www/html/docroot/sites/default/files
+  echo "\$config['system.logging']['error_level'] = 'hide';" >> /var/www/html/docroot/sites/default/settings.php
+  sudo chmod -R 777 /var/www/html/docroot/sites/default/settings.php
+  sudo chmod -R 777 /var/www/html/docroot/sites/default/files
+
+  printf "\nOpen http://$IP/core/install.php to proceed with Open Y installation.\n"
 else
   echo "Installing Open Y $OPENYVERSION"
   COMPOSER_MEMORY_LIMIT=-1 composer remove ymcatwincities/openy --no-update
   COMPOSER_MEMORY_LIMIT=-1 composer require ymcatwincities/openy:${OPENYVERSION} --update-with-dependencies
+  COMPOSER_MEMORY_LIMIT=-1 composer update
+  cp /tmp/drupal/sites/default/settings.php /var/www/html/docroot/sites/default/settings.php
+  sudo mkdir /var/www/html/docroot/sites/default/files
+  echo "\$config['system.logging']['error_level'] = 'hide';" >> /var/www/html/docroot/sites/default/settings.php
+  sudo chmod -R 777 /var/www/html/docroot/sites/default/settings.php
+  sudo chmod -R 777 /var/www/html/docroot/sites/default/files
+
+  printf "\nOpen http://$IP/core/install.php to proceed with Open Y installation.\n"
 fi
-COMPOSER_MEMORY_LIMIT=-1 composer update
-
-cp /tmp/drupal/sites/default/settings.php /var/www/html/docroot/sites/default/settings.php
-sudo mkdir /var/www/html/docroot/sites/default/files
-echo "\$config['system.logging']['error_level'] = 'hide';" >> /var/www/html/docroot/sites/default/settings.php
-sudo chmod -R 777 /var/www/html/docroot/sites/default/settings.php
-sudo chmod -R 777 /var/www/html/docroot/sites/default/files
-
-IP="$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/')"
-
-printf "\nOpen http://$IP/core/install.php to proceed with Open Y installation.\n"
 
 
-TODO
-ansible-playbook vendor/ymcatwincities/openy-cibox-vm/cibox/jobs/build.yml  -i 'localhost,' --connection=local -e "server_docroot_folder=/var/www/sandbox_accessibility_lily/reinstall workspace=/var/www/sandbox_accessibility_lily/reinstall build_number=docroot build_folder_prefix="
+
+
