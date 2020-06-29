@@ -97,6 +97,7 @@ elif [[ "$OPENYVERSION" == "virtualy" ]]; then
   ansible-playbook /var/www/html/vendor/ymcatwincities/openy-cibox-vm/cibox/jobs/build.yml  -i 'localhost,' --connection=local -e "server_docroot_folder=/var/www/html workspace=/var/www/html/ build_number=docroot build_folder_prefix="
   cd ~
   cd /var/www/html/docroot
+  ls
   ansible-playbook -vvvv /var/www/html/vendor/ymcatwincities/openy-cibox-build/reinstall.yml  -i 'localhost,' --connection=local -e "php_env_vars=APP_ENV=dev mysql_user=root mysql_password=root mysql_db=virtualy drupal_folder=/var/www/html/docroot site_url=$IP pp_environment=demo run_reinstall=true openy_profile_install_settings=openy_configure_profile.preset=standard openy_theme_select.theme=openy_carnation openy_select_content.content=0 sites_default_file_path=/var/www/html/docroot/sites/example.sites.php solr_module_config_path=/var/www/html/docroot/modules/contrib/search_api_solr/solr-conf/4.x"
   printf "\nOpen http://$IP/user/login to proceed with Virtual Y installation.\n"
 elif [[ "$OPENYVERSION" == "beta" ]]; then
