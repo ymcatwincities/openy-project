@@ -102,8 +102,10 @@ elif [[ "$OPENYVERSION" == "virtualy" ]]; then
   sudo chmod a+w /var/www/html/docroot/sites/default/files
   drush cr 
   
-  printf "\nOpen http://$IP/ to view with Virtual Y installation.\n Open link below to login as admin user. Change password after login!\n"
+  printf "\nOpen http://$IP/ to view Virtual Y installation.\n Open link below to login as admin user. Change password after login!\n"
   drush uli -l http://$IP/
+  printf "\nOpen http://$IP/user/1/edit to change your password.\n"
+  
 elif [[ "$OPENYVERSION" == "beta" ]]; then
   echo "Installing Latest Beta Open Y"
   COMPOSER_MEMORY_LIMIT=-1 composer remove ymcatwincities/openy --no-update
