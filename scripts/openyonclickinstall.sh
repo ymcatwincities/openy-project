@@ -103,9 +103,9 @@ elif [[ "$OPENYVERSION" == "virtualy" ]]; then
   sudo chown -R www-data:www-data /var/www/html/docroot/
   drush cr 
   
-  printf "\nOpen http://$IP/ to view Virtual Y installation.\n Open link below to login as admin user. Change password after login!\n"
+  printf "\n\n\n\n\n Open http://$IP/ to view Virtual Y installation.\n\n\n Open link below to login as admin user. Change password after login!\n\n\n\n"
   drush uli -l http://$IP/
-  printf "\nOpen http://$IP/user/1/edit to change your password.\n"
+  printf "\n\n\n Open http://$IP/user/1/edit to change your password.\n"
   
 elif [[ "$OPENYVERSION" == "beta" ]]; then
   echo "Installing Latest Beta Open Y"
