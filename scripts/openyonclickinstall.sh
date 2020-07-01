@@ -102,7 +102,7 @@ elif [[ "$OPENYVERSION" == "virtualy" ]]; then
   sudo chmod a+w /var/www/html/docroot/sites/default/files
   drush cr 
   
-  printf "\nOpen http://$IP/ to view with Virtual Y installation.\n Open link below to login as admin user. Change password after login!"
+  printf "\nOpen http://$IP/ to view with Virtual Y installation.\n Open link below to login as admin user. Change password after login!\n"
   drush uli -l http://$IP/
 elif [[ "$OPENYVERSION" == "beta" ]]; then
   echo "Installing Latest Beta Open Y"
