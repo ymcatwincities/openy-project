@@ -69,7 +69,7 @@ drush sql-drop -y
 printf "\nPreparing OpenY code tree \n"
 sudo rm -rf /var/www/html.bak/html || true
 sudo mv /var/www/html /var/www/html.bak || true
-COMPOSER_MEMORY_LIMIT=-1 composer create-project ymcatwincities/openy-project:8.2.x-dev /var/www/html --no-interaction
+COMPOSER_MEMORY_LIMIT=-1 composer create-project ymcatwincities/openy-project:8.2.x-dev /var/www/html --no-interaction -v --profile
 cd /var/www/html/
 
 IP="$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/')"
@@ -91,8 +91,8 @@ elif [[ "$OPENYVERSION" == "dev" ]]; then
   printf "\nOpen http://$IP/core/install.php to proceed with Open Y installation.\n"
 elif [[ "$OPENYVERSION" == "virtualy" ]]; then
   echo "Installing Latest Standalone Virtual Y"
-  COMPOSER_MEMORY_LIMIT=-1 composer require ymcatwincities/openy_gated_content
-  COMPOSER_MEMORY_LIMIT=-1 composer update
+  COMPOSER_MEMORY_LIMIT=-1 composer require ymcatwincities/openy_gated_content  -v --profile
+  COMPOSER_MEMORY_LIMIT=-1 composer update  -v --profile
   cd /var/www/html/docroot
   ansible-playbook /var/www/html/vendor/ymcatwincities/openy-cibox-vm/cibox/jobs/build.yml  -i 'localhost,' --connection=local -e "server_docroot_folder=/var/www/html workspace=/var/www/html/ build_number=docroot build_folder_prefix="
   cd /
