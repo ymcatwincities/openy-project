@@ -103,6 +103,10 @@ elif [[ "$OPENYVERSION" == "virtualy" ]]; then
   sudo chown -R www-data:www-data /var/www/html/docroot/
   drush cr 
   
+  drush en openy_gc_demo -y
+  drush cr
+  drush mim --group=virtual_y
+
   printf "\n\n\n\n\n Open http://$IP/ to view Virtual Y installation.\n\n\n Open link below to login as admin user. Change password after login!\n\n\n\n"
   drush uli -l http://$IP/
   printf "\n\n\n Open http://$IP/user/1/edit to change your password.\n"
