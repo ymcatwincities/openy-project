@@ -8,7 +8,7 @@
         "cweagans/composer-patches": "~1.0"
     },
     "require-dev": {
-        "ymcatwincities/openy-cibox-build": "dev-master",
+        "ymcatwincities/openy-cibox-build": "dev-solr6",
         "ymcatwincities/openy-cibox-vm": "dev-master",
         "ymcatwincities/openy-docksal": "dev-master",
         "consolidation/robo": "^1.1.5"
