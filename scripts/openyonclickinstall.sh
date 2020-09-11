@@ -81,7 +81,7 @@ IP="$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'
 if [[ "$OPENYVERSION" == "stable" ]]; then
   echo "Installing Latest Stable Open Y"
   COMPOSER_MEMORY_LIMIT=-1 composer remove ymcatwincities/openy --no-update
-  COMPOSER_MEMORY_LIMIT=-1 composer require ymcatwincities/openy:${OPENYVERSION} --update-with-dependencies
+  COMPOSER_MEMORY_LIMIT=-1 composer require ymcatwincities/openy --update-with-dependencies
   COMPOSER_MEMORY_LIMIT=-1 composer update
   cp /tmp/drupal/sites/default/settings.php /var/www/html/docroot/sites/default/settings.php
   sudo mkdir /var/www/html/docroot/sites/default/files
