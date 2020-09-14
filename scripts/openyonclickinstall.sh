@@ -29,7 +29,7 @@ OPENYVERSION=${OPENYVERSION:-stable}
 [ -z "$LC_CTYPE" ] && export LC_TYPE=en_US.UTF-8
 [ -z "$LANG" ] && export LANG=en_US.UTF-8
 
-printf "Hello, OpenY evaluator.\n OpenY one click install version 1.6.\n"
+printf "Hello, OpenY evaluator.\n OpenY one click install version 1.7.\n"
 
 printf "Installing OpenY into /var/www/html\n"
 
@@ -51,7 +51,7 @@ sudo mysql -uroot -p$root_pass -e "create database drupal;" || true
 sudo mkdir -p /var/www || true
 cd /var/www
 sudo rm -rf cibox || true
-git clone --branch=ansible_lamp https://github.com/cibox/cibox.git
+git clone --branch=ansible_lamp_php73 https://github.com/cibox/cibox.git
 cd cibox
 bash core/cibox-project-builder/files/vagrant/box/provisioning/shell/initial-setup.sh core/cibox-project-builder/files/vagrant/box/provisioning
 bash core/cibox-project-builder/files/vagrant/box/provisioning/shell/ansible.sh
@@ -69,6 +69,9 @@ drush sql-drop -y
 printf "\nPreparing OpenY code tree \n"
 sudo rm -rf /var/www/html.bak/html || true
 sudo mv /var/www/html /var/www/html.bak || true
+# Downgrading composer to non strict version @see https://github.com/composer/composer/issues/9191#issuecomment-690912711
+COMPOSER_MEMORY_LIMIT=-1 composer self-update 1.10.10
+COMPOSER_MEMORY_LIMIT=-1 composer global require zaporylie/composer-drupal-optimizations
 COMPOSER_MEMORY_LIMIT=-1 composer create-project ymcatwincities/openy-project:8.2.x-dev /var/www/html --no-interaction -v --profile
 cd /var/www/html/
 
@@ -77,6 +80,16 @@ IP="$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'
 # Check if the Open Y version must be adjusted.
 if [[ "$OPENYVERSION" == "stable" ]]; then
   echo "Installing Latest Stable Open Y"
+  COMPOSER_MEMORY_LIMIT=-1 composer remove ymcatwincities/openy --no-update
+  COMPOSER_MEMORY_LIMIT=-1 composer require ymcatwincities/openy --update-with-dependencies
+  COMPOSER_MEMORY_LIMIT=-1 composer update
+  cp /tmp/drupal/sites/default/settings.php /var/www/html/docroot/sites/default/settings.php
+  sudo mkdir /var/www/html/docroot/sites/default/files
+  echo "\$config['system.logging']['error_level'] = 'hide';" >> /var/www/html/docroot/sites/default/settings.php
+  sudo chmod -R 777 /var/www/html/docroot/sites/default/settings.php
+  sudo chmod -R 777 /var/www/html/docroot/sites/default/files
+
+  printf "\nOpen http://$IP/core/install.php to proceed with Open Y installation.\n"
 elif [[ "$OPENYVERSION" == "dev" ]]; then
   echo "Installing Latest Dev Open Y"
   COMPOSER_MEMORY_LIMIT=-1 composer remove ymcatwincities/openy --no-update
