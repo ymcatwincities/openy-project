@@ -51,7 +51,7 @@ sudo mysql -uroot -p$root_pass -e "create database drupal;" || true
 sudo mkdir -p /var/www || true
 cd /var/www
 sudo rm -rf cibox || true
-git clone --branch=ansible_lamp https://github.com/cibox/cibox.git
+git clone --branch=ansible_lamp_php73 https://github.com/cibox/cibox.git
 cd cibox
 bash core/cibox-project-builder/files/vagrant/box/provisioning/shell/initial-setup.sh core/cibox-project-builder/files/vagrant/box/provisioning
 bash core/cibox-project-builder/files/vagrant/box/provisioning/shell/ansible.sh
