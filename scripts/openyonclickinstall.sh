@@ -29,7 +29,7 @@ OPENYVERSION=${OPENYVERSION:-stable}
 [ -z "$LC_CTYPE" ] && export LC_TYPE=en_US.UTF-8
 [ -z "$LANG" ] && export LANG=en_US.UTF-8
 
-printf "Hello, OpenY evaluator.\n OpenY one click install version 1.6.\n"
+printf "Hello, OpenY evaluator.\n OpenY one click install version 1.7.\n"
 
 printf "Installing OpenY into /var/www/html\n"
 
