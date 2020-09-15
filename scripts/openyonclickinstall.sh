@@ -31,7 +31,6 @@ OPENYVERSION=${OPENYVERSION:-stable}
 
 printf "Hello, OpenY evaluator.\n OpenY one click install version 1.7.\n"
 
-
 printf "Installing OpenY into /var/www/html\n"
 
 printf "\nMaking backup of existing /var/www/html folder to /var/www/html.bak\n"
@@ -146,7 +145,6 @@ else
 
   printf "\nOpen http://$IP/core/install.php to proceed with Open Y installation.\n"
 fi
-
 
 
 
