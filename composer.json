@@ -9,7 +9,7 @@
         "composer/installers": "^1.2",
         "drupal/core-composer-scaffold": "^8.8",
         "drupal/core-recommended": "^8.8",
-        "cweagans/composer-patches": "~1.0"
+        "cweagans/composer-patches": "^1.5.0"
     },
     "require-dev": {
         "ymcatwincities/openy-cibox-build": "dev-master",
@@ -184,6 +184,11 @@
         "docksal": "[ -d ./vendor/ymcatwincities/openy-docksal ] && (rsync -r --exclude=composer.json --exclude=.git --exclude=README.md ./vendor/ymcatwincities/openy-docksal/ ./) || (rm -rf .docksal build.sh)"
     },
     "extra": {
+        "patches": {
+            "ymcatwincities/openy": {
+                "Added check for empty blocks": "https://patch-diff.githubusercontent.com/raw/ymcatwincities/openy/pull/2216.patch"
+            }
+        },
         "installer-types": [
             "bower-asset",
             "npm-asset"
