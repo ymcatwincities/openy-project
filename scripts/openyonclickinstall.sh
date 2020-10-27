@@ -75,7 +75,7 @@ COMPOSER_MEMORY_LIMIT=-1 composer global require zaporylie/composer-drupal-optim
 COMPOSER_MEMORY_LIMIT=-1 composer create-project ymcatwincities/openy-project:8.2.x-dev /var/www/html --no-interaction -v --profile
 cd /var/www/html/
 
-IP="$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/')"
+IP="$(ip addr show dev eth0 | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/')"
 
 # Check if the Open Y version must be adjusted.
 if [[ "$OPENYVERSION" == "stable" ]]; then
