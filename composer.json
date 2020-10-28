@@ -14,7 +14,7 @@
     "require-dev": {
         "ymcatwincities/openy-cibox-build": "dev-master",
         "ymcatwincities/openy-cibox-vm": "dev-master",
-        "ymcatwincities/openy-docksal": "dev-master",
+        "ymcatwincities/openy-docksal": "dev-master || composer2-dev",
         "drupal/drupal-driver": "~1.0",
         "drupal/drupal-extension": "^3.2",
         "behat/behat": "^3.0",
