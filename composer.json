@@ -12,8 +12,8 @@
         "cweagans/composer-patches": "^1.5.0"
     },
     "require-dev": {
-        "ymcatwincities/openy-cibox-build": "dev-master",
-        "ymcatwincities/openy-cibox-vm": "dev-master",
+        "ymcatwincities/openy-cibox-build": "dev-master || composer2-dev",
+        "ymcatwincities/openy-cibox-vm": "dev-master || composer2-dev",
         "ymcatwincities/openy-docksal": "dev-master || composer2-dev",
         "drupal/drupal-driver": "~1.0",
         "drupal/drupal-extension": "^3.2",
