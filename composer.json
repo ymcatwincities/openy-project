@@ -5,16 +5,16 @@
     "license": "GPL-2.0+",
     "require": {
         "zaporylie/composer-drupal-optimizations":"^1.1",
-        "ymcatwincities/openy": "8.2.* || 8.x-2.x-composer2-dev || dev-8.x-2.x-composer2",
+        "ymcatwincities/openy": "dev-8.x-2.x",
         "composer/installers": "^1.2 || ^1.9",
         "drupal/core-composer-scaffold": "^8.8",
         "drupal/core-recommended": "^8.8",
         "cweagans/composer-patches": "^1.5.0"
     },
     "require-dev": {
-        "ymcatwincities/openy-cibox-build": "dev-master || composer2-dev",
-        "ymcatwincities/openy-cibox-vm": "dev-master || composer2-dev",
-        "ymcatwincities/openy-docksal": "dev-master || composer2-dev",
+        "ymcatwincities/openy-cibox-build": "dev-master",
+        "ymcatwincities/openy-cibox-vm": "dev-master",
+        "ymcatwincities/openy-docksal": "dev-master",
         "drupal/drupal-driver": "~1.0",
         "drupal/drupal-extension": "^3.2",
         "behat/behat": "^3.0",
