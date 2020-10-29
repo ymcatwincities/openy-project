@@ -30,15 +30,18 @@
     "repositories": [
         {
             "type": "composer",
-            "url": "https://openy.cibox.tools:4681"
+            "url": "https://openy.cibox.tools:4681",
+            "canonical": false
         },
         {
             "type": "composer",
-            "url": "https://packages.drupal.org/8"
+            "url": "https://packages.drupal.org/8",
+            "canonical": false
         },
         {
             "type": "composer",
-            "url": "https://asset-packagist.org"
+            "url": "https://asset-packagist.org",
+            "canonical": false
         },
         {
             "type": "package",
