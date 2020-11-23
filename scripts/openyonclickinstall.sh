@@ -1,5 +1,5 @@
 #!/bin/bash
-# To get the latest stable OpenY on DigitalOcean 16.04 LST x64 droplet run the command:
+# To get the latest stable OpenY on DigitalOcean 16.04 LTS x64, 18.04LTS x64, or 20.04LTS x64 droplet run the command:
 #   curl -Ls http://bit.ly/initopeny | bash -s
 #   or
 #   curl -Ls http://bit.ly/initopeny | bash -s stable
@@ -29,7 +29,7 @@ OPENYVERSION=${OPENYVERSION:-stable}
 [ -z "$LC_CTYPE" ] && export LC_TYPE=en_US.UTF-8
 [ -z "$LANG" ] && export LANG=en_US.UTF-8
 
-printf "Hello, OpenY evaluator.\n OpenY one click install version 1.7.\n"
+printf "Hello, OpenY evaluator.\n OpenY one click install version 1.8.\n"
 
 printf "Installing OpenY into /var/www/html\n"
 
@@ -51,7 +51,17 @@ sudo mysql -uroot -p$root_pass -e "create database drupal;" || true
 sudo mkdir -p /var/www || true
 cd /var/www
 sudo rm -rf cibox || true
-git clone --branch=ansible_lamp_php73 https://github.com/cibox/cibox.git
+Uversion=$(lsb_release -rs)
+echo "$Uversion"
+if [[ "$Uversion" == "16.04" ]];then
+   git clone --branch=ansible_lamp_php73 https://github.com/cibox/cibox.git
+elif [[ "$Uversion" == "18.04" ]] || [[ "$Uversion" == "20.04" ]];then
+   git clone --branch=ansible_lamp_php74_ubuntu20 https://github.com/cibox/cibox.git
+else
+  echo "Unsupported release of Operating System"
+  exit 1
+fi
+
 cd cibox
 bash core/cibox-project-builder/files/vagrant/box/provisioning/shell/initial-setup.sh core/cibox-project-builder/files/vagrant/box/provisioning
 bash core/cibox-project-builder/files/vagrant/box/provisioning/shell/ansible.sh
@@ -70,7 +80,7 @@ printf "\nPreparing OpenY code tree \n"
 sudo rm -rf /var/www/html.bak/html || true
 sudo mv /var/www/html /var/www/html.bak || true
 
-COMPOSER_MEMORY_LIMIT=-1 composer self-update 1.10.15
+COMPOSER_MEMORY_LIMIT=-1 composer self-update --2
 COMPOSER_MEMORY_LIMIT=-1 composer global require zaporylie/composer-drupal-optimizations
 COMPOSER_MEMORY_LIMIT=-1 composer create-project ymcatwincities/openy-project:8.2.x-dev /var/www/html --no-interaction -v --profile
 cd /var/www/html/
