@@ -1,5 +1,5 @@
 #!/bin/bash
-# To get the latest stable OpenY on DigitalOcean 16.04 LST x64 droplet run the command:
+# To get the latest stable OpenY on DigitalOcean 16.04 LTS, 18.04LTS, and 20.04LTS x64 droplet run the command:
 #   curl -Ls http://bit.ly/initopeny | bash -s
 #   or
 #   curl -Ls http://bit.ly/initopeny | bash -s stable
@@ -51,7 +51,17 @@ sudo mysql -uroot -p$root_pass -e "create database drupal;" || true
 sudo mkdir -p /var/www || true
 cd /var/www
 sudo rm -rf cibox || true
-git clone --branch=ansible_lamp_php74_ubuntu20 https://github.com/cibox/cibox.git
+Uversion=$(lsb_release -rs)
+echo "$Uversion"
+if [[ "$Urelease" == "16.04" ]];then
+   git clone --branch=ansible_lamp_php73 https://github.com/cibox/cibox.git
+elif [[ "$Uversion" == "18.04" ]] || [[ "$Uversion" == "20.04" ]];then
+   git clone --branch=ansible_lamp_php74_ubuntu20 https://github.com/cibox/cibox.git
+else
+  echo "Unsupported release of Operating System"
+  exit 1
+fi
+
 cd cibox
 bash core/cibox-project-builder/files/vagrant/box/provisioning/shell/initial-setup.sh core/cibox-project-builder/files/vagrant/box/provisioning
 bash core/cibox-project-builder/files/vagrant/box/provisioning/shell/ansible.sh
