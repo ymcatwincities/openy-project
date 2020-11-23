@@ -53,7 +53,7 @@ cd /var/www
 sudo rm -rf cibox || true
 Uversion=$(lsb_release -rs)
 echo "$Uversion"
-if [[ "$Urelease" == "16.04" ]];then
+if [[ "$Uversion" == "16.04" ]];then
    git clone --branch=ansible_lamp_php73 https://github.com/cibox/cibox.git
 elif [[ "$Uversion" == "18.04" ]] || [[ "$Uversion" == "20.04" ]];then
    git clone --branch=ansible_lamp_php74_ubuntu20 https://github.com/cibox/cibox.git
