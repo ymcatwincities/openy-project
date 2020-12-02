@@ -186,7 +186,8 @@
     "extra": {
         "patches": {
             "ymcatwincities/openy": {
-                "Added check for empty blocks": "https://patch-diff.githubusercontent.com/raw/ymcatwincities/openy/pull/2216.patch"
+                "Added check for empty blocks": "https://patch-diff.githubusercontent.com/raw/ymcatwincities/openy/pull/2216.patch",
+                "Enable colorapi in proper order for upgrade path": "https://patch-diff.githubusercontent.com/raw/ymcatwincities/openy/pull/2320.diff"
             }
         },
         "installer-types": [
