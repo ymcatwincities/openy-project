@@ -80,7 +80,7 @@ printf "\nPreparing OpenY code tree \n"
 sudo rm -rf /var/www/html.bak/html || true
 sudo mv /var/www/html /var/www/html.bak || true
 
-COMPOSER_MEMORY_LIMIT=-1 composer self-update --2
+COMPOSER_MEMORY_LIMIT=-1 composer self-update
 COMPOSER_MEMORY_LIMIT=-1 composer global require zaporylie/composer-drupal-optimizations
 COMPOSER_MEMORY_LIMIT=-1 composer create-project ymcatwincities/openy-project:8.2.x-dev /var/www/html --no-interaction -v --profile
 cd /var/www/html/
@@ -153,4 +153,7 @@ else
 
   printf "\nOpen http://$IP/core/install.php to proceed with Open Y installation.\n"
 fi
+
+
+
 
