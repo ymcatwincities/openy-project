@@ -8,7 +8,7 @@
   Open YMCA
 </h3>
 <p align="center">
-  http://openymca.org
+  https://openy.org
 </p>
 <p align="center">
   An open source platform for YMCAs, by YMCAs built on <a href="http://drupal.org">Drupal</a>.
@@ -22,7 +22,7 @@
 
 ***
 
-The [Open Y Project](http://www.openymca.org/) is a composer based installer for the [Open Y distribution](https://github.com/ymcatwincities/openy).
+The [Open Y Project](https://openy.org/) is a composer based installer for the [Open Y distribution](https://github.com/ymcatwincities/openy).
 
 
 ## Requirements
@@ -35,34 +35,25 @@ If you do not have [Composer](http://getcomposer.org/), you may install it by fo
 #### Latest STABLE version
 ```
 composer create-project ymcatwincities/openy-project MY_PROJECT --no-interaction --no-dev
-cd MY_PROJECT && composer update
+cd MY_PROJECT
 ```
 
-This command will build project based on [**latest stable**](https://github.com/ymcatwincities/openy/releases) release.
 
-#### Latest 2.0 BETA version
-```
-composer create-project ymcatwincities/openy-project:8.2.x-dev MY_PROJECT --no-interaction --no-dev
-cd MY_PROJECT && composer update
-```
+This command will build project based on [**latest Drupal 8 development**](https://github.com/ymcatwincities/openy/commits/8.x-2.x) release.
 
-This command will build project based on [**latest 8.2 beta**](https://github.com/ymcatwincities/openy/releases) release.
-
-#### Latest DEVELOPMENT version (1.x)
-```
-composer create-project ymcatwincities/openy-project:8.1.x-development-dev MY_PROJECT --no-interaction --no-dev
-cd MY_PROJECT && composer update
-```
-
-This command will build project based on [**latest development**](https://github.com/ymcatwincities/openy/commits/8.x-1.x) release.
-
-#### Latest DEVELOPMENT version (2.x)
+#### Latest DEVELOPMENT version (Drupal 8 2.x)
 ```
 composer create-project ymcatwincities/openy-project:8.2.x-development-dev MY_PROJECT --no-interaction --no-dev
-cd MY_PROJECT && composer update
+cd MY_PROJECT
 ```
 
-This command will build project based on the [**development branch**](https://github.com/ymcatwincities/openy/commits/8.x-2.x) release.
+#### Latest DEVELOPMENT version (Drupal 9 2.x)
+```
+composer create-project ymcatwincities/openy-project:9.2.x-development-dev MY_PROJECT --no-interaction --no-dev
+cd MY_PROJECT
+```
+
+This command will build project based on the [**Drupal 9 development branch**](https://github.com/ymcatwincities/openy/commits/9.x-2.x) release.
 
 See https://youtu.be/jRlinjpTl0c how to video for the whole process of this command usage.
 
@@ -71,30 +62,15 @@ See https://youtu.be/jRlinjpTl0c how to video for the whole process of this comm
 
 You should use composer command without `--no-dev` if you would like to get environment that was configured especially for OpenY. This means you'd remove Vagrant/Docksal from the code tree.
 So it should look like this:
+
 ```
-composer create-project ymcatwincities/openy-project:8.1.x-development-dev MY_PROJECT --no-interaction
-cd MY_PROJECT && composer update
+composer create-project ymcatwincities/openy-project:9.2.x-development-dev MY_PROJECT --no-interaction
+cd MY_PROJECT
 ```
 
 See https://youtu.be/jRlinjpTl0c how to video for the whole process of this command usage.
 =======
 
-
-or (for Open Y 2.0)
-
-```
-composer create-project ymcatwincities/openy-project:8.2.x-development-dev MY_PROJECT --no-interaction
-cd MY_PROJECT && composer update
-
-```
-
-If you need to keep all git submodules - use
-```sh
-composer create-project ymcatwincities/openy-project:8.x-2.x-git-dev MY_PROJECT --no-interaction
-cd MY_PROJECT && composer update
-
-```
-See https://youtu.be/jRlinjpTl0c how to video for the whole process of this command usage.
 
 ### CIBox VM
 [CIBox VM](http://cibox.tools) allows you to make a contribution into OpenY in a few minutes. Just follow steps and then you'll know how to do it.
@@ -134,7 +110,7 @@ All development happens in the [Open Y Drupal 8 installation profile](https://gi
 
 ```
 "require": {
-    "ymcatwincities/openy": "dev-8.x-1.x",
+    "ymcatwincities/openy": "dev-9.x-2.x",
 }
 ```
 ```
@@ -166,7 +142,7 @@ All development happens in the [Open Y Drupal 8 installation profile](https://gi
 | `build.sh` | Build script for Docksal environment |
 
 # Documentation
-Documentation about Open Y is available at [docs](https://github.com/ymcatwincities/openy/tree/8.x-1.x/docs). For details please visit [http://www.openymca.org](http://www.openymca.org).
+Documentation about Open Y is available at [docs](https://github.com/ymcatwincities/openy/tree/9.x-2.x/docs). For details please visit [https://openy.org](http://www.openymca.org).
 
 For Development information please take a look at [docs/Development](https://github.com/ymcatwincities/openy/tree/8.x-1.x/docs/Development).
 
