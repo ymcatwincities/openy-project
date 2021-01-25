@@ -35,7 +35,7 @@ If you do not have [Composer](http://getcomposer.org/), you may install it by fo
 #### Latest STABLE version
 ```
 composer create-project ymcatwincities/openy-project MY_PROJECT --no-interaction --no-dev
-cd MY_PROJECT && composer update
+cd MY_PROJECT
 ```
 
 
@@ -44,13 +44,13 @@ This command will build project based on [**latest Drupal 8 development**](https
 #### Latest DEVELOPMENT version (Drupal 8 2.x)
 ```
 composer create-project ymcatwincities/openy-project:8.2.x-development-dev MY_PROJECT --no-interaction --no-dev
-cd MY_PROJECT && composer update
+cd MY_PROJECT
 ```
 
 #### Latest DEVELOPMENT version (Drupal 9 2.x)
 ```
 composer create-project ymcatwincities/openy-project:9.2.x-development-dev MY_PROJECT --no-interaction --no-dev
-cd MY_PROJECT && composer update
+cd MY_PROJECT
 ```
 
 This command will build project based on the [**Drupal 9 development branch**](https://github.com/ymcatwincities/openy/commits/9.x-2.x) release.
@@ -65,7 +65,7 @@ So it should look like this:
 
 ```
 composer create-project ymcatwincities/openy-project:9.2.x-development-dev MY_PROJECT --no-interaction
-cd MY_PROJECT && composer update
+cd MY_PROJECT
 ```
 
 See https://youtu.be/jRlinjpTl0c how to video for the whole process of this command usage.
