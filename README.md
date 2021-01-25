@@ -39,7 +39,7 @@ cd MY_PROJECT && composer update
 ```
 
 
-This command will build project based on [**latest development**](https://github.com/ymcatwincities/openy/commits/8.x-2.x) release.
+This command will build project based on [**latest Drupal 8 development**](https://github.com/ymcatwincities/openy/commits/8.x-2.x) release.
 
 #### Latest DEVELOPMENT version (Drupal 8 2.x)
 ```
@@ -53,7 +53,7 @@ composer create-project ymcatwincities/openy-project:9.2.x-development-dev MY_PR
 cd MY_PROJECT && composer update
 ```
 
-This command will build project based on the [**development branch**](https://github.com/ymcatwincities/openy/commits/8.x-2.x) release.
+This command will build project based on the [**Drupal 9 development branch**](https://github.com/ymcatwincities/openy/commits/9.x-2.x) release.
 
 See https://youtu.be/jRlinjpTl0c how to video for the whole process of this command usage.
 
