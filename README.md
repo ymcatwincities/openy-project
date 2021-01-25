@@ -38,7 +38,6 @@ composer create-project ymcatwincities/openy-project MY_PROJECT --no-interaction
 cd MY_PROJECT && composer update
 ```
 
-```
 
 This command will build project based on [**latest development**](https://github.com/ymcatwincities/openy/commits/8.x-2.x) release.
 
