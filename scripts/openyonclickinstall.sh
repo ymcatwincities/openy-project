@@ -17,8 +17,8 @@
 #   curl -Ls https://openy.org/l/virtualy | bash -s virtualy
 #
 
-OPENYBETA="8.2.*@beta"
-OPENYDEV="dev-8.x-2.x"
+OPENYBETA="9.2.*@beta"
+OPENYDEV="dev-9.x-2.x"
 
 OPENYVERSION="$1"
 OPENYVERSION=${OPENYVERSION:-stable}
@@ -29,7 +29,7 @@ OPENYVERSION=${OPENYVERSION:-stable}
 [ -z "$LC_CTYPE" ] && export LC_TYPE=en_US.UTF-8
 [ -z "$LANG" ] && export LANG=en_US.UTF-8
 
-printf "Hello, OpenY evaluator.\n OpenY one click install version 1.8.\n"
+printf "Hello, OpenY evaluator.\n OpenY one click install version 1.9.\n"
 
 printf "Installing OpenY into /var/www/html\n"
 
@@ -70,7 +70,7 @@ sudo sed -i "s/var\/www/var\/www\/html\/docroot/g" /etc/apache2/sites-enabled/vh
 
 sudo service apache2 restart
 
-drush dl -y drupal-8.9.x --dev --destination=/tmp --default-major=8 --drupal-project-rename=drupal
+drush dl -y drupal-9.1.x --dev --destination=/tmp --default-major=9 --drupal-project-rename=drupal
 
 cd /tmp/drupal
 drush si -y minimal --db-url=mysql://root:$root_pass@localhost/drupal ; drush sql-drop -y
@@ -82,7 +82,7 @@ sudo mv /var/www/html /var/www/html.bak || true
 
 #COMPOSER_MEMORY_LIMIT=-1 composer self-update
 COMPOSER_MEMORY_LIMIT=-1 composer global require zaporylie/composer-drupal-optimizations
-COMPOSER_MEMORY_LIMIT=-1 composer create-project ymcatwincities/openy-project:8.2.x-dev /var/www/html --no-interaction -v --profile
+COMPOSER_MEMORY_LIMIT=-1 composer create-project ymcatwincities/openy-project:9.2.x-dev /var/www/html --no-interaction -v --profile
 cd /var/www/html/
 
 IP="$(ip addr show dev eth0 | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/')"
