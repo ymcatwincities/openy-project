@@ -4,7 +4,7 @@
     "type": "project",
     "license": "GPL-2.0+",
     "require": {
-        "ymcatwincities/openy": "dev-9.x-2.x-drupal_core9.2",
+        "ymcatwincities/openy": "dev-9.x-2.x-drupal_core9.2patch",
         "cweagans/composer-patches": "~1.0"
     },
     "require-dev": {
