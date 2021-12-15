@@ -11,7 +11,8 @@
         "ymcatwincities/openy-cibox-build": "dev-solr6",
         "ymcatwincities/openy-cibox-vm": "dev-master",
         "ymcatwincities/openy-docksal": "dev-master",
-        "consolidation/robo": "^1.1.5"
+        "consolidation/robo": "^1.1.5",
+        "drush/drush": "^10.5.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
