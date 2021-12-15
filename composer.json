@@ -4,14 +4,15 @@
     "type": "project",
     "license": "GPL-2.0+",
     "require": {
-        "ymcatwincities/openy": "dev-9.x-2.x-core9.3",
+        "ymcatwincities/openy": "dev-9.x-2.x",
         "cweagans/composer-patches": "~1.0"
     },
     "require-dev": {
         "ymcatwincities/openy-cibox-build": "dev-solr6",
         "ymcatwincities/openy-cibox-vm": "dev-master",
         "ymcatwincities/openy-docksal": "dev-master",
-        "consolidation/robo": "^1.1.5"
+        "consolidation/robo": "^1.1.5",
+        "drush/drush": "^10.5.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
