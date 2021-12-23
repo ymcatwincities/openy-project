@@ -19,6 +19,11 @@
     "repositories": [
         {
             "type": "composer",
+            "url": "https://packages.drupal.org/8",
+            "exclude": ["drupal/social_feed_fetcher"]
+        },
+        {
+            "type": "composer",
             "url": "https://asset-packagist.org"
         },
         {
