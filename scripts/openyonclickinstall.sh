@@ -82,7 +82,7 @@ sudo mv /var/www/html /var/www/html.bak || true
 
 #COMPOSER_MEMORY_LIMIT=-1 composer self-update
 COMPOSER_MEMORY_LIMIT=-1 composer global require zaporylie/composer-drupal-optimizations
-COMPOSER_MEMORY_LIMIT=-1 composer create-project ymcatwincities/openy-project:9.2.x-dev /var/www/html --no-interaction -v --profile
+COMPOSER_MEMORY_LIMIT=-1 composer create-project ymcatwincities/openy-project:dev-9.2.x-core920 /var/www/html --no-interaction -v --profile
 cd /var/www/html/
 
 IP="$(ip addr show dev eth0 | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/')"
