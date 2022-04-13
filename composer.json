@@ -4,11 +4,11 @@
     "type": "project",
     "license": "GPL-2.0+",
     "require": {
-        "ymcatwincities/openy": "^9.2",
+        "ymcatwincities/openy": "dev-dev-9.x-2.x-af4",
         "cweagans/composer-patches": "~1.0"
     },
     "require-dev": {
-        "ymcatwincities/openy-cibox-build": "dev-solr6",
+        "ymcatwincities/openy-cibox-build": "dev-ansible4",
         "ymcatwincities/openy-cibox-vm": "dev-master",
         "ymcatwincities/openy-docksal": "dev-master",
         "consolidation/robo": "^1.1.5 || ^2",
