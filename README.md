@@ -33,7 +33,7 @@ If you do not have [Composer](http://getcomposer.org/), you may install it by fo
 
 #### Latest STABLE version
 ```
-composer create-project ymcatwincities/openy-project MY_PROJECT --no-interaction
+composer create-project ycloudyusa/yusaopeny-project MY_PROJECT --no-interaction
 cd MY_PROJECT
 ```
 
